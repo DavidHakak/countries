@@ -1,0 +1,17 @@
+.header {
+    margin-left: 23vw;
+    width: 54.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 4rem;
+    margin: 1vw 16vw 1vw 1vw;
+}
+
+.search {
+    height: 3vh;
+    width: 15vw;
+}

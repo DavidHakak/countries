@@ -1,0 +1,7 @@
+.countryList {
+    margin-top: 2vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
