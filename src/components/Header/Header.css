@@ -1,9 +1,13 @@
 .header {
-    margin-left: 23vw;
-    width: 54.5vw;
+    background: gray;
+    margin-left: 22.2vw;
+    width: 55.3vw;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
 }
 
 .title {

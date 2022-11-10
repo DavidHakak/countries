@@ -2,7 +2,7 @@ import React from "react";
 import "./Country.css";
 function Country(props) {
   return (
-    <div className="country">
+    <div className="country" onClick={() => props.setPopup(true)}>
       <div className="flag">{props.flag}</div>
       <div className="mainDiv">
         <div className="common">
