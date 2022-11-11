@@ -10,18 +10,24 @@
 }
 
 .inner-popup {
-    width: 22vw;
-    height: 50vh;
-    padding: 0.3%;
+    width: 15vw;
+    height: 45vh;
     background: white;
     border: 2px solid black;
     border-radius: 10px;
-
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.close-btn {
-    height: 2vh;
-    width: 50px;
+.popup-flag {
+    font-size: 10rem;
+}
+
+.popup-population {
+    font-size: 1.5rem;
+}
+
+.popup-languages {
+    font-size: 1.5rem;
 }

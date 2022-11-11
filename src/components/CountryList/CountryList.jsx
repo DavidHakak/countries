@@ -5,20 +5,23 @@ import "./CountryList.css";
 
 function CountryList(props) {
   const [popup, setPopup] = useState(false);
+  const [inx, setInx] = useState();
   return (
     <div className="countryList">
       {props.countries.map((oneCountry, inx) => (
         <Country
-          key={inx}
+          key={oneCountry.name.common}
+          inx={inx}
           countries={props.countries}
           common={oneCountry.name.common}
           capital={oneCountry.capital}
           continents={oneCountry.continents[0]}
           flag={oneCountry.flag}
           setPopup={setPopup}
+          setInx={setInx}
         />
       ))}
-      <Popup triger={popup} setPopup={setPopup} />
+      <Popup triger={popup} setPopup={setPopup} inx={inx} countries={props.countries} />
     </div>
   );
 }
