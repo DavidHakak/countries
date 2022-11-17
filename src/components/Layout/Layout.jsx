@@ -1,25 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import { data } from "../../countries";
 import "./Layout.css";
+import axios from "axios";
+import Popup from "../Popup/Popup";
 
 function Layout() {
-  const [countries, setCountries] = useState(data);
+  useEffect(() => {
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then(({ data }) => setCountries(data));
+  }, []);
 
-  const changeCountries = (e) => {
-    let newCountries = data.filter((country) =>
-      country.name.common
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase(), 0)
-    );
-    setCountries(newCountries);
-  };
+  const [countries, setCountries] = useState([]);
+
+  const [searchWords, setSearchWords] = useState("");
+
+  const filterCountries = countries.filter((country) =>
+    searchWords
+      ? country.name.common.toUpperCase().startsWith(searchWords.toUpperCase())
+      : true
+  );
 
   return (
     <div className="layout">
-      <Header countries={countries} changeCountries={changeCountries} />
-      <Main countries={countries} />
+      <Header countries={filterCountries} setSearchWords={setSearchWords} />
+
+      <Main countries={filterCountries} />
+      <Popup />
+      {/* <Futer/> */}
     </div>
   );
 }

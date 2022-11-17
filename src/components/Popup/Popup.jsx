@@ -1,6 +1,14 @@
 import React from "react";
 import "./Popup.css";
 function Popup(props) {
+  const listLanguages = [];
+
+  if (props.triger) {
+    for (const i in props.countries[props.inx].languages) {
+      listLanguages.push(props.countries[props.inx].languages[i]);
+    }
+  }
+
   return props.triger ? (
     <div className="popup" onClick={() => props.setPopup(false)}>
       <div className="inner-popup">
@@ -11,8 +19,9 @@ function Popup(props) {
         </div>
         <div className="popup-languages">
           <b> Languages:</b> <br />
-          {props.countries[props.inx].languages[1]}
-          {console.log(props.countries[props.inx].languages)}
+          {listLanguages.map((lang) => (
+            <p>{lang}</p>
+          ))}
         </div>
       </div>
     </div>

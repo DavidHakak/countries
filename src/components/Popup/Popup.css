@@ -2,8 +2,7 @@
     width: 100%;
     height: 100vh;
     position: fixed;
-    background: rgba(0, 0, 0, 0.395);
-
+    background: rgba(0, 0, 0, 0.643);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,10 +10,11 @@
 
 .inner-popup {
     width: 15vw;
-    height: 45vh;
+    height: 50vh;
     background: white;
     border: 2px solid black;
     border-radius: 10px;
+    box-shadow: 0px 0px 100px 70px rgba(0, 0, 0, 0.77);
     display: flex;
     flex-direction: column;
     justify-content: center;
