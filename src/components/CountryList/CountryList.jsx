@@ -1,32 +1,19 @@
-import React, { useState } from "react";
-import Popup from "../Popup/Popup";
+import React from "react";
+
 import Country from "../Country/Country";
 import "./CountryList.css";
 
-function CountryList({countries}) {
-  const [popup, setPopup] = useState(false);
-  const [inx, setInx] = useState();
-
+function CountryList({ countries, setCountryName, setPopup }) {
   return (
     <li className="countryList">
-      {countries.map((oneCountry, inx) => (
+      {countries.map((oneCountry) => (
         <Country
-          key={oneCountry.name.common}
-          inx={inx}
-          common={oneCountry.name.common}
-          capital={oneCountry.capital}
-          continents={oneCountry.continents[0]}
-          flag={oneCountry.flag}
+        key={oneCountry.name.common}
+          oneCountry={oneCountry}
           setPopup={setPopup}
-          setInx={setInx}
+          setCountryName={setCountryName}
         />
       ))}
-      <Popup
-        triger={popup}
-        setPopup={setPopup}
-        inx={inx}
-        countries={countries}
-      />
     </li>
   );
 }

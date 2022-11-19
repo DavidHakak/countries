@@ -6,7 +6,7 @@ function Main(props) {
   
   return (
     <ul className="main">
-      <CountryList countries={props.countries} />
+      <CountryList countries={props.countries} setPopup={props.setPopup} setCountryName={props.setCountryName}/>
     </ul>
   );
 }

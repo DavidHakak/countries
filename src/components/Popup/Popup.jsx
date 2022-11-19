@@ -1,32 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Popup.css";
-function Popup(props) {
-  const listLanguages = [];
+import axios from "axios";
 
-  if (props.triger) {
-    for (const i in props.countries[props.inx].languages) {
-      listLanguages.push(props.countries[props.inx].languages[i]);
-    }
-  }
+function Popup({ countryName, setPopup }) {
+  useEffect(() => {
+    axios.get("https://restcountries.com/v3.1/all").then((data) => {
+      const country = data.data.find((c) => c.name.common === countryName);
+      setSelectedCountry(country);
+      setListLanguages(country.languages);
+    });
+  }, []);
 
-  return props.triger ? (
-    <div className="popup" onClick={() => props.setPopup(false)}>
+  const [listLanguages, setListLanguages] = useState({});
+  const [selectedCountry, setSelectedCountry] = useState({});
+
+  return (
+    <div className="popup" onClick={() => setPopup(false)}>
       <div className="inner-popup">
-        <div className="popup-flag">{props.countries[props.inx].flag}</div>
+        <div className="popup-flag">{selectedCountry.flag}</div>
         <div className="popup-population">
           <b> Population:</b> <br />
-          <p>{props.countries[props.inx].population}</p>
+          <p>{selectedCountry.population}</p>
         </div>
+
         <div className="popup-languages">
           <b> Languages:</b> <br />
-          {listLanguages.map((lang) => (
-            <p>{lang}</p>
+          {Object.values(listLanguages).map((languages) => (
+            <p>{languages}</p>
           ))}
         </div>
       </div>
     </div>
-  ) : (
-    ""
   );
 }
 
